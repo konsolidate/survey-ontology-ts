@@ -1,6 +1,6 @@
 {
-  "name": "survey-ontology-ts",
-  "version": "1.0.0",
+  "name": "@consolidate/survey-ontology-ts",
+  "version": "0.0.1",
   "description": "A typescript wrapper around the Survey Ontology - https://w3id.org/survey-ontology",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     "test": "mocha -r ts-node/register 'test/**/*.spec.ts'",
     "test:watch": "jest --watch"
   },
-  "author": "",
+  "author": "Andries Van Humbeeck",
   "license": "ISC",
   "dependencies": {
     "n3": "^1.8.0",
@@ -31,5 +31,16 @@
     "reflect-metadata": "^0.1.13",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.2"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/consolidate-eu/survey-ontology-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/consolidate-eu/survey-ontology-ts/issues"
+  },
+  "homepage": "https://github.com/consolidate-eu/survey-ontology-ts#readme"
 }

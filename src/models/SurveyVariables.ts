@@ -1,4 +1,4 @@
-import { RdfBean, RdfPrefixes, RdfSubject } from '@consolidate/ts-rdf-mapper'
+import { RdfBean, RdfPrefixes, RdfSubject } from 'ts-rdf-mapper'
 
 
 @RdfPrefixes({

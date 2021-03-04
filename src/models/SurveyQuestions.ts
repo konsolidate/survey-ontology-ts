@@ -1,4 +1,4 @@
-import { RdfBean, RdfPrefixes, RdfProperty, RdfSubject } from '@consolidate/ts-rdf-mapper'
+import { RdfBean, RdfPrefixes, RdfProperty, RdfSubject } from 'ts-rdf-mapper'
 import shortid from 'shortid'
 import { SurveyElement } from './SurveyElement'
 import { ObservableVariable } from './SurveyVariables'

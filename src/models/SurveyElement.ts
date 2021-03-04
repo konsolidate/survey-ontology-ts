@@ -1,4 +1,4 @@
-import { RdfProperty, XSDDataType } from '@consolidate/ts-rdf-mapper'
+import { RdfProperty, XSDDataType } from 'ts-rdf-mapper'
 
 export abstract class SurveyElement {
   @RdfProperty({predicate: 'survey:hasText', xsdType: XSDDataType.XSD_STRING})

@@ -1,4 +1,4 @@
-import { RdfBean, RdfMapper, RdfPrefixes, RdfProperty, RdfSubject, XSDDataType } from '@consolidate/ts-rdf-mapper'
+import { RdfBean, RdfMapper, RdfPrefixes, RdfProperty, RdfSubject, XSDDataType } from 'ts-rdf-mapper'
 import shortid from 'shortid'
 import { ExportOptions } from './ExportOptions'
 import { SurveyElement } from './SurveyElement'

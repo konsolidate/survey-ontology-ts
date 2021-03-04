@@ -14,10 +14,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@consolidate/ts-rdf-mapper": "file:../ts-rdf-mapper",
     "n3": "^1.8.0",
     "rdf-namespaces": "^1.9.2",
-    "shortid": "^2.2.16"
+    "shortid": "^2.2.16",
+    "ts-rdf-mapper": "^1.0.2"
   },
   "devDependencies": {
     "@types/chai": "^4.2.15",

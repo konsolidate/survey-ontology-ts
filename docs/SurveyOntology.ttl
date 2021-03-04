@@ -1,0 +1,308 @@
+#################################################################
+###  Generated with the experimental alpha version of the TTL exporter of WebVOWL (version 1.1.3)  http://visualdataweb.de/webvowl/   ###
+#################################################################
+
+@prefix : 		<https://w3id.org/survey-ontology#> .
+@prefix rdf: 		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: 		<http://www.w3.org/2002/07/owl#> .
+@prefix xsd: 		<http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: 		<http://purl.org/dc/elements/1.1/#> .
+@prefix xml: 		<http://www.w3.org/XML/1998/namespace> .
+@base 			<https://w3id.org/survey-ontology#> .
+
+<https://w3id.org/survey-ontology#> rdf:type owl:Ontology ;
+                                    dc:title "The Survey Ontology"@en; 
+                                    dc:description "undefined"@en;
+                                    owl:versionInfo "V 1.0, Release 2020"@en;
+                                    dc:creator "Gloria Re Calegari, Damiano Scandolari, Irene Celino, Mario Scrocca" . 
+#################################################################
+
+###  Property Definitions (Number of Property) 21 ###
+#  --------------------------- Property 0------------------------- 
+:hasAnswerText rdf:type owl:DatatypeProperty ;
+               rdfs:label "hasAnswerText"@IRI-based; 
+               rdfs:label "has answer text"@en; 
+               rdfs:domain :CompletedQuestion;
+               rdfs:range xsd:string . 
+#  --------------------------- Property 1------------------------- 
+:hasValue rdf:type owl:DatatypeProperty ;
+          rdfs:label "hasValue"@IRI-based; 
+          rdfs:label "has value"@en; 
+          rdfs:domain :ClosedAnswer;
+          rdfs:range xsd:float . 
+#  --------------------------- Property 2------------------------- 
+:completesQuestion rdf:type owl:ObjectProperty ;
+                   rdfs:label "completesQuestion"@IRI-based; 
+                   rdfs:label "completes question"@en; 
+                   rdfs:domain :CompletedQuestion;
+                   rdfs:range :Question . 
+#  --------------------------- Property 3------------------------- 
+:hasCompletionTimestamp rdf:type owl:DatatypeProperty ;
+                        rdfs:label "hasCompletionTimestamp"@IRI-based; 
+                        rdfs:label "has completion timestamp"@en; 
+                        rdfs:domain :CompletedQuestion;
+                        rdfs:range xsd:dateTime . 
+#  --------------------------- Property 4------------------------- 
+:hasLink rdf:type owl:DatatypeProperty ;
+         rdfs:label "hasLink"@IRI-based; 
+         rdfs:label "has link"@en; 
+         rdfs:domain :Talk;
+         rdfs:range xsd:anyURI . 
+#  --------------------------- Property 5------------------------- 
+:answeredIn rdf:type owl:ObjectProperty ;
+            rdfs:label "answeredIn"@IRI-based; 
+            rdfs:label "answered in"@en; 
+            rdfs:domain :CompletedQuestion;
+            rdfs:range :SurveyCompletionTask . 
+#  --------------------------- Property 6------------------------- 
+:completedFor rdf:type owl:ObjectProperty ;
+              rdfs:label "completedFor"@IRI-based; 
+              rdfs:label "completed for"@en; 
+              rdfs:domain :SurveyCompletionTask;
+              rdfs:range :SurveyTarget . 
+#  --------------------------- Property 7------------------------- 
+:leadsTo rdf:type owl:ObjectProperty ;
+         rdfs:label "leadsTo"@IRI-based; 
+         rdfs:label "leads to"@en; 
+         rdfs:domain :SurveyElement;
+         rdfs:range :SurveyElement . 
+#  --------------------------- Property 8------------------------- 
+:hasStatus rdf:type owl:DatatypeProperty ;
+           rdfs:label "hasStatus"@IRI-based; 
+           rdfs:label "has status"@en; 
+           rdfs:domain :SurveyProcedure;
+           rdfs:range xsd:string . 
+#  --------------------------- Property 9------------------------- 
+:startsWith rdf:type owl:ObjectProperty ;
+            rdfs:label "startsWith"@IRI-based; 
+            rdfs:label "starts with"@en; 
+            rdfs:domain :SurveyProcedure;
+            rdfs:range :SurveyElement . 
+#  --------------------------- Property 10------------------------- 
+:hasText rdf:type owl:DatatypeProperty ;
+         rdfs:label "hasText"@IRI-based; 
+         rdfs:label "has text"@en; 
+         rdfs:domain :SurveyElement;
+         rdfs:range xsd:string . 
+#  --------------------------- Property 11------------------------- 
+:hasVisualization rdf:type owl:ObjectProperty ;
+                  rdfs:label "hasVisualization"@IRI-based; 
+                  rdfs:label "has visualization"@en; 
+                  rdfs:domain :MultipleChoiceQuestion;
+                  rdfs:range :QuestionVisualization . 
+#  --------------------------- Property 12------------------------- 
+:hasOrderNumber rdf:type owl:DatatypeProperty ;
+                rdfs:label "hasOrderNumber"@IRI-based; 
+                rdfs:label "has order number"@en; 
+                rdfs:domain :ClosedAnswer;
+                rdfs:range xsd:integer . 
+#  --------------------------- Property 13------------------------- 
+:inSurveyProcedure rdf:type owl:ObjectProperty ;
+                   rdfs:label "inSurveyProcedure"@IRI-based; 
+                   rdfs:label "in survey procedure"@en; 
+                   rdfs:domain :SurveyElement;
+                   rdfs:range :SurveyProcedure . 
+#  --------------------------- Property 14------------------------- 
+:hasAnswer rdf:type owl:ObjectProperty ;
+           rdfs:label "hasAnswer"@IRI-based; 
+           rdfs:label "has answer"@en; 
+           rdfs:domain :CompletedQuestion;
+           rdfs:range :Answer . 
+#  --------------------------- Property 15------------------------- 
+:participantId rdf:type owl:DatatypeProperty ;
+               rdfs:label "participantId"@IRI-based; 
+               rdfs:label "participant id"@en; 
+               rdfs:domain :Participant;
+               rdfs:range xsd:string . 
+#  --------------------------- Property 16------------------------- 
+:hasPoints rdf:type owl:DatatypeProperty ;
+           rdfs:label "hasPoints"@IRI-based; 
+           rdfs:label "has points"@en; 
+           rdfs:domain :ClosedAnswer;
+           rdfs:range xsd:float . 
+#  --------------------------- Property 17------------------------- 
+:hasLatentVariable rdf:type owl:ObjectProperty ;
+                   rdfs:label "hasLatentVariable"@IRI-based; 
+                   rdfs:label "has latent variable"@en; 
+                   rdfs:domain :Question;
+                   rdfs:range :LatentVariable . 
+#  --------------------------- Property 18------------------------- 
+:hasTitle rdf:type owl:DatatypeProperty ;
+          rdfs:label "hasTitle"@IRI-based; 
+          rdfs:label "has title"@en; 
+          rdfs:domain :SurveyProcedure;
+          rdfs:range xsd:string . 
+#  --------------------------- Property 19------------------------- 
+:sessionId rdf:type owl:DatatypeProperty ;
+           rdfs:label "sessionId"@IRI-based; 
+           rdfs:label "session id"@en; 
+           rdfs:domain :SurveyCompletionTask;
+           rdfs:range xsd:string . 
+#  --------------------------- Property 20------------------------- 
+:hasObservableVariable rdf:type owl:ObjectProperty ;
+                       rdfs:label "hasObservableVariable"@IRI-based; 
+                       rdfs:label "has observable variable"@en; 
+                       rdfs:domain :Question;
+                       rdfs:range :ObservableVariable . 
+###  Class Definitions (Number of Classes) 36 ###
+#  --------------------------- Class  0------------------------- 
+<http://purl.org/linked-data/cube#Observation> rdf:type owl:Class; 
+                                               rdfs:label "Observation"@IRI-based . 
+#  --------------------------- Class  1------------------------- 
+:CompletedQuestion rdf:type owl:Class; 
+                   rdfs:subClassOf <http://purl.org/wf4ever/wfdesc#Output> ;
+                   rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+                   rdfs:subClassOf <http://purl.org/linked-data/cube#Observation> ;
+                   rdfs:label "CompletedQuestion"@IRI-based; 
+                   rdfs:label "Completed Question"@en . 
+#  --------------------------- Class  2------------------------- 
+:Participant rdf:type owl:Class; 
+             rdfs:subClassOf <http://www.w3.org/ns/prov#Agent> ;
+             rdfs:label "Participant"@IRI-based; 
+             rdfs:label "Participant"@en . 
+#  --------------------------- Class  3------------------------- 
+<http://www.w3.org/ns/prov#Entity> rdf:type owl:Class; 
+                                   rdfs:label "Entity"@IRI-based . 
+#  --------------------------- Class  4------------------------- 
+<http://purl.org/wf4ever/wfdesc#Output> rdf:type owl:Class; 
+                                        rdfs:label "Output"@IRI-based . 
+#  --------------------------- Class  5------------------------- 
+<http://w3id.org/rv-ontology#Model> rdf:type owl:Class; 
+                                    rdfs:subClassOf <http://purl.org/wf4ever/ro#Resource> ;
+                                    rdfs:label "Model"@IRI-based . 
+#  --------------------------- Class  6------------------------- 
+:ClosedAnswer rdf:type owl:Class; 
+              rdfs:subClassOf :Answer ;
+              rdfs:label "ClosedAnswer"@IRI-based; 
+              rdfs:label "Closed Answer"@en . 
+#  --------------------------- Class  7------------------------- 
+<http://www.w3.org/ns/prov#Agent> rdf:type owl:Class; 
+                                  rdfs:label "Agent"@IRI-based . 
+#  --------------------------- Class  8------------------------- 
+:QuestionVisualization rdf:type owl:Class; 
+                       rdfs:label "QuestionVisualization"@IRI-based; 
+                       rdfs:label "Question Visualization"@en . 
+#  --------------------------- Class  9------------------------- 
+<http://purl.org/wf4ever/wfdesc#Process> rdf:type owl:Class; 
+                                         rdfs:label "Process"@IRI-based . 
+#  --------------------------- Class  10------------------------- 
+:SurveyElement rdf:type owl:Class; 
+               rdfs:label "SurveyElement"@IRI-based; 
+               rdfs:label "Survey Element"@en . 
+#  --------------------------- Class  11------------------------- 
+:OpenAnswer rdf:type owl:Class; 
+            rdfs:subClassOf :Answer ;
+            rdfs:label "OpenAnswer"@IRI-based; 
+            rdfs:label "Open Answer"@en . 
+#  --------------------------- Class  12------------------------- 
+<http://purl.org/wf4ever/ro#Resource> rdf:type owl:Class; 
+                                      rdfs:label "Resource"@IRI-based . 
+#  --------------------------- Class  13------------------------- 
+:Answer rdf:type owl:Class; 
+        rdfs:subClassOf :SurveyElement ;
+        owl:disjointWith :Question ;
+        owl:disjointWith :Talk ;
+        rdfs:label "Answer"@IRI-based; 
+        rdfs:label "Answer"@en . 
+#  --------------------------- Class  14------------------------- 
+:Talk rdf:type owl:Class; 
+      rdfs:subClassOf :SurveyElement ;
+      rdfs:label "Talk"@IRI-based; 
+      rdfs:label "Talk"@en . 
+#  --------------------------- Class  15------------------------- 
+:CompletedSurvey rdf:type owl:Class; 
+                 rdfs:subClassOf <http://purl.org/linked-data/cube#Slice> ;
+                 rdfs:subClassOf <http://purl.org/wf4ever/wfprov#Artifact> ;
+                 rdfs:label "CompletedSurvey"@IRI-based; 
+                 rdfs:label "Completed Survey"@en . 
+#  --------------------------- Class  16------------------------- 
+:SurveyCompletionTask rdf:type owl:Class; 
+                      rdfs:subClassOf <http://purl.org/wf4ever/wfprov#ProcessRun> ;
+                      rdfs:label "SurveyCompletionTask"@IRI-based; 
+                      rdfs:label "Survey Completion Task"@en . 
+#  --------------------------- Class  17------------------------- 
+:OpenQuestion rdf:type owl:Class; 
+              rdfs:subClassOf :Question ;
+              rdfs:label "OpenQuestion"@IRI-based; 
+              rdfs:label "Open Question"@en . 
+#  --------------------------- Class  18------------------------- 
+<http://purl.org/wf4ever/ro#ResearchObject> rdf:type owl:Class; 
+                                            rdfs:label "ResearchObject"@IRI-based . 
+#  --------------------------- Class  19------------------------- 
+:ObservableVariable rdf:type owl:Class; 
+                    rdfs:subClassOf <http://w3id.org/rv-ontology#Variable> ;
+                    rdfs:label "ObservableVariable"@IRI-based; 
+                    rdfs:label "Observable Variable"@en . 
+#  --------------------------- Class  20------------------------- 
+:LatentVariable rdf:type owl:Class; 
+                rdfs:subClassOf <http://w3id.org/rv-ontology#Variable> ;
+                rdfs:label "LatentVariable"@IRI-based; 
+                rdfs:label "Latent Variable"@en . 
+#  --------------------------- Class  21------------------------- 
+<http://w3id.org/rv-ontology#Variable> rdf:type owl:Class; 
+                                       rdfs:label "Variable"@IRI-based . 
+#  --------------------------- Class  22------------------------- 
+:SurveyDataSet rdf:type owl:Class; 
+               rdfs:subClassOf <http://purl.org/wf4ever/ro#Resource> ;
+               rdfs:subClassOf <http://purl.org/linked-data/cube#DataSet> ;
+               rdfs:label "SurveyDataSet"@IRI-based; 
+               rdfs:label "Survey Dataset"@en . 
+#  --------------------------- Class  23------------------------- 
+:ClosedQuestion rdf:type owl:Class; 
+                rdfs:subClassOf :Question ;
+                rdfs:label "ClosedQuestion"@IRI-based; 
+                rdfs:label "Closed Question"@en . 
+#  --------------------------- Class  24------------------------- 
+:SurveyProcedure rdf:type owl:Class; 
+                 rdfs:subClassOf <http://purl.org/wf4ever/wfdesc#Process> ;
+                 rdfs:subClassOf <http://purl.org/wf4ever/ro#Resource> ;
+                 rdfs:label "SurveyProcedure"@IRI-based; 
+                 rdfs:label "Survey Procedure"@en . 
+#  --------------------------- Class  25------------------------- 
+:Question rdf:type owl:Class; 
+          rdfs:subClassOf :SurveyElement ;
+          owl:disjointWith :Talk ;
+          rdfs:label "Question"@IRI-based; 
+          rdfs:label "Question"@en . 
+#  --------------------------- Class  26------------------------- 
+<http://purl.org/wf4ever/wfprov#ProcessRun> rdf:type owl:Class; 
+                                            rdfs:label "ProcessRun"@IRI-based . 
+#  --------------------------- Class  27------------------------- 
+<http://purl.org/linked-data/cube#Slice> rdf:type owl:Class; 
+                                         rdfs:label "Slice"@IRI-based . 
+#  --------------------------- Class  28------------------------- 
+:MultipleChoiceQuestion rdf:type owl:Class; 
+                        rdfs:subClassOf :ClosedQuestion ;
+                        rdfs:label "MultipleChoiceQuestion"@IRI-based; 
+                        rdfs:label "Multiple Choice Question"@en . 
+#  --------------------------- Class  29------------------------- 
+:SurveyTarget rdf:type owl:Class; 
+              rdfs:label "SurveyTarget"@IRI-based; 
+              rdfs:label "Survey Target"@en . 
+#  --------------------------- Class  30------------------------- 
+:MutipleInputQuestion rdf:type owl:Class; 
+                      rdfs:subClassOf :OpenQuestion ;
+                      rdfs:label "MutipleInputQuestion"@IRI-based; 
+                      rdfs:label "Multiple Input Question"@en . 
+#  --------------------------- Class  31------------------------- 
+:SingleInputQuestion rdf:type owl:Class; 
+                     rdfs:subClassOf :OpenQuestion ;
+                     rdfs:label "SingleInputQuestion"@IRI-based; 
+                     rdfs:label "Single Input Question"@en . 
+#  --------------------------- Class  32------------------------- 
+<http://purl.org/wf4ever/wfprov#Artifact> rdf:type owl:Class; 
+                                          rdfs:label "Artifact"@IRI-based . 
+#  --------------------------- Class  33------------------------- 
+:Survey rdf:type owl:Class; 
+        rdfs:subClassOf <http://purl.org/wf4ever/ro#ResearchObject> ;
+        rdfs:label "Survey"@IRI-based; 
+        rdfs:label "Survey"@en . 
+#  --------------------------- Class  34------------------------- 
+:CheckboxQuestion rdf:type owl:Class; 
+                  rdfs:subClassOf :ClosedQuestion ;
+                  rdfs:label "CheckboxQuestion"@IRI-based; 
+                  rdfs:label "Checkbox Question"@en . 
+#  --------------------------- Class  35------------------------- 
+<http://purl.org/linked-data/cube#DataSet> rdf:type owl:Class; 
+                                           rdfs:label "DataSet"@IRI-based . 

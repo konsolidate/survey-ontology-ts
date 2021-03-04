@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  graphdb:
+    image: ontotext/graphdb:9.6.0-se
+    ports:
+    - 7200:7200
+    container_name: consolidate-graphdb
+    volumes:
+      - graphdb-volume:/opt/graphdb/home
+
+volumes:
+  graphdb-volume:

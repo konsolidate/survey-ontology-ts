@@ -1,14 +1,20 @@
-import { QuestionFactory, SingleInputQuestion, SurveyProcedure, SurveyProcedureFactory } from '../src'
 import { expect } from 'chai'
-import { ttlSingleQuestionSurvey, turtleBasicSurvey } from './turtle-responses'
+import { QuestionFactory, SurveyProcedure, SurveyProcedureFactory } from '../src'
+import { ttlDoubleQuestionSurvey, turtleBasicSurvey } from './turtle-responses'
 
 describe('Reading and parsing turtle files', () => {
 
-  it('create a survey by factory method', async () => {
+  describe('create a survey by factory method', async () => {
     const survey = SurveyProcedureFactory.fromId('newid')
     const ttl = survey.toTurtleString()
 
-    expect(ttl).to.equal(turtleBasicSurvey)
+    it("should equal the expected turtle output", () => {
+      expect(ttl).to.equal(turtleBasicSurvey)
+    })
+
+    it("should have the proper descriptions", () => {
+      expect(survey.bean).to.equal("https://w3id.org/survey-ontology#SurveyProcedure")
+    })
   })
 
   it('create a survey with base class', () => {
@@ -80,7 +86,7 @@ describe('Reading and parsing turtle files', () => {
       .addElement(question2)
       .build()
 
-    it("should be converted to turtle correctly", () => {
+    it("should be contain the correct turtle lines", () => {
       const ttl = procedure.toTurtleString()
 
       expect(ttl).to.contain(`process:newid a survey:SurveyProcedure;
@@ -92,13 +98,22 @@ describe('Reading and parsing turtle files', () => {
     survey:hasText "How old are you?"^^xsd:string.`)
     })
 
+    it("should be converted to complete turtle doc", () => {
+      const ttl = procedure.toTurtleString()
+
+      expect(ttl.trim()).to.equal(ttlDoubleQuestionSurvey.trim());
+    })
+
     it("should be convertable to Quads", () => {
       const quads = procedure.toQuads()
+      console.log(quads)
 
       expect(quads).to.have.length(7)
       const q1 = quads.find(q => q.subject.id === 'http://schema.org/Question#question_id_1')
       expect(q1).to.not.be.undefined
     })
+
+
 
   })
 

@@ -33,6 +33,10 @@ abstract class ClosedQuestion extends Question {}
 export class SingleInputQuestion extends OpenQuestion {
   @RdfSubject('question')
   id: string | undefined
+
+  get bean(): string {
+    return "https://w3id.org/survey-ontology#question"
+  }
 }
 
 

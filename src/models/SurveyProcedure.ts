@@ -1,7 +1,7 @@
 import { RdfBean, RdfMapper, RdfPrefixes, RdfProperty, RdfSubject, XSDDataType } from 'ts-rdf-mapper'
 import { Parser, Quad } from 'n3'
 import shortid from 'shortid'
-import { ExportOptions } from './ExportOptions'
+import { ExportOptions, RdfDescription } from './ExportOptions'
 import { SurveyElement } from './SurveyElement'
 
 
@@ -10,7 +10,7 @@ import { SurveyElement } from './SurveyElement'
   'process': 'http://purl.org/wf4ever/wfdesc#Process'
 })
 @RdfBean('survey:SurveyProcedure')
-export class SurveyProcedure implements ExportOptions {
+export class SurveyProcedure implements ExportOptions, RdfDescription {
 
   @RdfSubject('process')
   id: string | undefined
@@ -20,6 +20,10 @@ export class SurveyProcedure implements ExportOptions {
 
   @RdfProperty({predicate: 'survey:hasStatus', xsdType: XSDDataType.XSD_STRING})
   status: string | undefined
+
+  get bean(): string {
+    return "https://w3id.org/survey-ontology#SurveyProcedure"
+  }
 
   toTurtleString(): string {
     return RdfMapper.serialize(this)

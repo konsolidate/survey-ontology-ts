@@ -27,7 +27,7 @@ abstract class ClosedQuestion extends Question {}
 
 @RdfPrefixes({
   'survey': 'https://w3id.org/survey-ontology#',
-  'question': 'http://schema.org/Question'
+  'question': 'http://schema.org/Question#'
 })
 @RdfBean('survey:SingleInputQuestion')
 export class SingleInputQuestion extends OpenQuestion {

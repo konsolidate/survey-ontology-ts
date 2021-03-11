@@ -1,4 +1,5 @@
 import { RdfBean, RdfMapper, RdfPrefixes, RdfProperty, RdfSubject, XSDDataType } from 'ts-rdf-mapper'
+import { Parser, Quad } from 'n3'
 import shortid from 'shortid'
 import { ExportOptions } from './ExportOptions'
 import { SurveyElement } from './SurveyElement'
@@ -22,6 +23,11 @@ export class SurveyProcedure implements ExportOptions {
 
   toTurtleString(): string {
     return RdfMapper.serialize(this)
+  }
+
+  toQuads(): Quad[] {
+    const p = new Parser()
+    return p.parse(this.toTurtleString())
   }
 }
 

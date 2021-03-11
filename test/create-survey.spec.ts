@@ -69,7 +69,7 @@ describe('Reading and parsing turtle files', () => {
     survey:hasText "How old are you?"^^xsd:string.`)
   })
 
-  it('create a survey with \'AddElement\' factory methods', () => {
+  describe('create a survey with \'AddElement\' factory methods', () => {
     const factory = new SurveyProcedureFactory('newid')
     const question1 = QuestionFactory.singleInputQuestion({text: 'Where do you live?', id: 'question_id_1'})
     const question2 = QuestionFactory.singleInputQuestion({text: 'How old are you?', id: 'question_id_2'})
@@ -80,15 +80,26 @@ describe('Reading and parsing turtle files', () => {
       .addElement(question2)
       .build()
 
-    const ttl = procedure.toTurtleString()
+    it("should be converted to turtle correctly", () => {
+      const ttl = procedure.toTurtleString()
 
-    expect(ttl).to.contain(`process:newid a survey:SurveyProcedure;
+      expect(ttl).to.contain(`process:newid a survey:SurveyProcedure;
     survey:startsWith question:question_id_1.`)
-    expect(ttl, ttl).to.contain(`question:question_id_1 a survey:SingleInputQuestion;
+      expect(ttl, ttl).to.contain(`question:question_id_1 a survey:SingleInputQuestion;
     survey:hasText "Where do you live?"^^xsd:string;
     survey:leadsTo question:question_id_2.`)
-    expect(ttl).to.contain(`question:question_id_2 a survey:SingleInputQuestion;
+      expect(ttl).to.contain(`question:question_id_2 a survey:SingleInputQuestion;
     survey:hasText "How old are you?"^^xsd:string.`)
+    })
+
+    it("should be convertable to Quads", () => {
+      const quads = procedure.toQuads()
+
+      expect(quads).to.have.length(7)
+      const q1 = quads.find(q => q.subject.id === 'http://schema.org/Question#question_id_1')
+      expect(q1).to.not.be.undefined
+    })
+
   })
 
   describe('error handling', () => {

@@ -1,6 +1,6 @@
 {
   "name": "@consolidate/survey-ontology-ts",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A typescript wrapper around the Survey Ontology - https://w3id.org/survey-ontology",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

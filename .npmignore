@@ -1,8 +1,12 @@
 .idea
+.vscode
+.github
 node_modules
 **/.DS_Store
 *.iml
-dist
 db
 internal_docs
 .npmrc
+
+src
+docs

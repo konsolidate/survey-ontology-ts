@@ -37,7 +37,7 @@ export class SingleInputQuestion extends OpenQuestion {
 
 
 export class QuestionFactory {
-  static singleInputQuestion({id = shortid(), text}: {id: string, text: string}): SingleInputQuestion {
+  static singleInputQuestion({id = shortid(), text}: {id?: string, text: string}): SingleInputQuestion {
     if (!text) {
       throw new Error("No text provided for singleInputQuestion")
     }

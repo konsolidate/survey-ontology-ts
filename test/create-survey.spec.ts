@@ -4,7 +4,7 @@ import { ttlSingleQuestionSurvey, turtleBasicSurvey } from './turtle-responses'
 
 describe('Reading and parsing turtle files', () => {
 
-  it('create a survey by factorymethod', async () => {
+  it('create a survey by factory method', async () => {
     const survey = SurveyProcedureFactory.fromId('newid')
     const ttl = survey.toTurtleString()
 
@@ -43,13 +43,80 @@ describe('Reading and parsing turtle files', () => {
 
     const ttl = survey.toTurtleString()
 
+    expect(ttl).to.contain(`process:newid a survey:SurveyProcedure;
+    survey:startsWith question:question_id_1.`)
     expect(ttl).to.contain(`question:question_id_1 a survey:SingleInputQuestion;
     survey:hasText "Where do you live?"^^xsd:string;
     survey:leadsTo question:question_id_2.`)
-    expect(ttl).to.contain(`process:newid a survey:SurveyProcedure;
-    survey:startsWith question:question_id_1.`)
     expect(ttl).to.contain(`question:question_id_2 a survey:SingleInputQuestion;
     survey:hasText "How old are you?"^^xsd:string.`)
+  })
+
+  it('create a survey with 2 questions by factory methods', () => {
+    const question1 = QuestionFactory.singleInputQuestion({text: 'Where do you live?', id: 'question_id_1'})
+    const question2 = QuestionFactory.singleInputQuestion({text: 'How old are you?', id: 'question_id_2'})
+
+    const survey = SurveyProcedureFactory.fromSurveyElements({id: 'newid', elements: [question1, question2]})
+
+    const ttl = survey.toTurtleString()
+
+    expect(ttl).to.contain(`process:newid a survey:SurveyProcedure;
+    survey:startsWith question:question_id_1.`)
+    expect(ttl, ttl).to.contain(`question:question_id_1 a survey:SingleInputQuestion;
+    survey:hasText "Where do you live?"^^xsd:string;
+    survey:leadsTo question:question_id_2.`)
+    expect(ttl).to.contain(`question:question_id_2 a survey:SingleInputQuestion;
+    survey:hasText "How old are you?"^^xsd:string.`)
+  })
+
+  it('create a survey with \'AddElement\' factory methods', () => {
+    const factory = new SurveyProcedureFactory('newid')
+    const question1 = QuestionFactory.singleInputQuestion({text: 'Where do you live?', id: 'question_id_1'})
+    const question2 = QuestionFactory.singleInputQuestion({text: 'How old are you?', id: 'question_id_2'})
+
+    const procedure =
+      factory
+      .addElement(question1)
+      .addElement(question2)
+      .build()
+
+    const ttl = procedure.toTurtleString()
+
+    expect(ttl).to.contain(`process:newid a survey:SurveyProcedure;
+    survey:startsWith question:question_id_1.`)
+    expect(ttl, ttl).to.contain(`question:question_id_1 a survey:SingleInputQuestion;
+    survey:hasText "Where do you live?"^^xsd:string;
+    survey:leadsTo question:question_id_2.`)
+    expect(ttl).to.contain(`question:question_id_2 a survey:SingleInputQuestion;
+    survey:hasText "How old are you?"^^xsd:string.`)
+  })
+
+  describe('error handling', () => {
+    it('create a survey with \'AddElement\' of same question should throw', () => {
+      const factory = new SurveyProcedureFactory('newid')
+      const question1 = QuestionFactory.singleInputQuestion({text: 'Where do you live?', id: 'question_id_1'})
+
+      const badFn = () => factory
+      .addElement(question1)
+      .addElement(question1)
+      .build()
+
+      expect(badFn).to.throw('Cannot add element. This will create a circular reference. Did you add the same question multiple times?')
+    })
+
+    it('create a survey with \'AddElement\' of same question in different order should throw', () => {
+      const factory = new SurveyProcedureFactory('newid')
+      const question1 = QuestionFactory.singleInputQuestion({text: 'Where do you live?', id: 'question_id_1'})
+      const question2 = QuestionFactory.singleInputQuestion({text: 'How old are you?', id: 'question_id_2'})
+
+      const badFn = () => factory
+      .addElement(question1)
+      .addElement(question2)
+      .addElement(question1)
+      .build()
+
+      expect(badFn).to.throw('Cannot add element. This will create a circular reference. Did you add the same question multiple times?')
+    })
   })
 
 })
